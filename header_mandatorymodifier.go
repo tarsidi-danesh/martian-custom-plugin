@@ -1,4 +1,4 @@
-package main
+package header
 
 import (
 	"encoding/json"
@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	parse.Register("mandatoryRequestModifier", mandatoryRequestConfig)
+	parse.Register("header.MandatoryModifier", mandatoryRequestConfig)
 }
 
 type ValueTypes int
