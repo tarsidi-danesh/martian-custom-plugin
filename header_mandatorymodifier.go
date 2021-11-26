@@ -13,29 +13,29 @@ func init() {
 	parse.Register("header.MandatoryModifier", mandatoryRequestConfig)
 }
 
-type ValueTypes int
+type ValueTypes string
 
 const (
-	DYNAMIC ValueTypes = 0
-	STATIC             = 1
+	DYNAMIC ValueTypes = "DYNAMIC"
+	STATIC             = "STATIC"
 )
 
-type Generators int
+type Generators string
 
 const (
-	NONE Generators = 0
-	UUID            = 1
+	NONE Generators = "NONE"
+	UUID            = "UUID"
 )
 
-type HeaderValue struct {
+type Value struct {
 	ValueType   ValueTypes `json:"type"`
 	Generator   Generators `json:"generator"`
 	StaticValue string     `json:"staticValue"`
 }
 
 type Header struct {
-	Name  string      `json:"name"`
-	Value HeaderValue `json:"value"`
+	Name  string `json:"name"`
+	Value Value  `json:"value"`
 }
 
 type MandatoryRequestConfig struct {
