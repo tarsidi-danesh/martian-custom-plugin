@@ -1,4 +1,4 @@
-module com.github/tarsidi-danesh/martian-custom-plugin
+module github.com/tarsidi-danesh/martian-custom-plugin
 
 go 1.16
 
