@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "plugin": {
+    "pattern": ".so",
+    "folder": "/Users/tarsidi.danesh/Documents/GitHub/krakend-plugin/"
+  },
+  "extra_config": {
+    "github_com/devopsfaith/krakend-gologging": {
+      "level": "INFO",
+      "prefix": "[FLIGHT-GATEWAY]",
+      "syslog": true,
+      "stdout": true,
+      "format": "default"
+    },
+    "github_com/devopsfaith/krakend/transport/http/server/handler": {
+      "name": "handler-plugin"
+    }
+  },
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "output_encoding": "no-op",
+  "name": "flight-gateway",
+  "read_timeout": "5000ms",
+  "write_timeout": "5000ms",
+  "idle_timeout": "5000ms",
+  "endpoints": [
+    {
+      "endpoint": "/tix-flight-master-discovery/airline/partners",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/tix-flight-master-discovery/airline/partners",
+          "encoding": "no-op",
+          "method": "GET",
+          "sd": "static",
+          "host": [
+            "https://flight-master-discovery-be-svc.test-flight-cluster.tiket.com/"
+          ],
+          "disable_host_sanitize": true,
+          "extra_config": {
+            "github.com/devopsfaith/krakend/transport/http/client/executor": {
+              "name": "proxy-plugin"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
