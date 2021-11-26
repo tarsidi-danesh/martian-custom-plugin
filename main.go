@@ -102,3 +102,5 @@ func mandatoryRequestConfig(b []byte) (*parse.Result, error) {
 	}
 	return parse.NewResult(modifier, []parse.ModifierType{parse.Request})
 }
+
+func main() {}
