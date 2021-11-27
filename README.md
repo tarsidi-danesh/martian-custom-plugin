@@ -1,26 +1,20 @@
+## Krakend martian custom plugin
+
+To add the custom modifier to KrakenD it’s only needed to create a file like this one in the KrakenD-CE repository `/cmd/krakend-ce`:
+
+```
+package main
+
+import _ "github.com/tarsidi-danesh/martian-custom-plugin"
+```
+
+and just re-build with command `make build` or `make build_on_doker` if your machine is not using linux OS
+
+### Sample Configuration
+
+```json
 {
-  "version": 2,
-  "plugin": {
-    "pattern": ".so",
-    "folder": "./"
-  },
-  "extra_config": {
-    "github_com/devopsfaith/krakend-gologging": {
-      "level": "INFO",
-      "prefix": "[FLIGHT-GATEWAY]",
-      "syslog": true,
-      "stdout": true,
-      "format": "default"
-    }
-  },
-  "timeout": "3000ms",
-  "cache_ttl": "300s",
-  "output_encoding": "no-op",
-  "name": "flight-gateway",
-  "read_timeout": "5000ms",
-  "write_timeout": "5000ms",
-  "idle_timeout": "5000ms",
-  "endpoints": [
+"endpoints": [
     {
       "endpoint": "/tix-flight-master-discovery/airline/partners",
       "method": "GET",
@@ -98,3 +92,4 @@
     }
   ]
 }
+```
