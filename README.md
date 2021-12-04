@@ -1,5 +1,10 @@
 ## Krakend martian custom plugin
 
+### Tech Stack
+ - Go 1.16
+ - Krakend CE v1.4.1
+
+### Custom Modifier
 To add the custom modifier to KrakenD it’s only needed to create a file like this one in the KrakenD-CE repository `/cmd/krakend-ce`:
 
 ```
